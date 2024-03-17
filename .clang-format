@@ -1,0 +1,42 @@
+# options: https://clang.llvm.org/docs/ClangFormatStyleOptions.html
+BasedOnStyle: LLVM
+IndentWidth: 2
+Language: Cpp
+# Must be 120 characters or less!
+ColumnLimit: 120
+# does (int) x instead of (int)x
+SpaceAfterCStyleCast: false
+# spaces, not tabs!
+UseTab: Never
+MaxEmptyLinesToKeep: 1
+# if (x) doStuff()  is not allowed, bad style
+AllowShortIfStatementsOnASingleLine: Never
+AllowShortLoopsOnASingleLine: false
+#
+AlignTrailingComments: true
+SpacesBeforeTrailingComments: 3
+# use \n instead of \r\n
+UseCRLF: false
+BreakBeforeBraces: Custom
+BraceWrapping:
+  AfterCaseLabel: true   # Add a line break after 'break;' within a switch block
+  AfterClass: true
+  AfterControlStatement: true
+  AfterEnum: true
+  AfterExternBlock: true
+  AfterFunction: true
+  AfterNamespace: false
+  AfterObjCDeclaration: false
+  AfterStruct: true
+  AfterUnion: true
+  BeforeCatch: true
+  BeforeElse: true
+ 
+# Set the continuation indent width for elements within the options[] array.
+ContinuationIndentWidth: 2
+# Use separate lines for the return type and function name in function declarations.
+BinPackParameters: false
+# Allow short functions to be on one line.
+AllowShortFunctionsOnASingleLine: Inline
+DerivePointerAlignment: false
+PointerAlignment: Left
