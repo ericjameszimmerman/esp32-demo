@@ -10,16 +10,29 @@ Button::Button(int digitalInputPin) : digitalInputPin_(digitalInputPin)
 {
   inputSamples_ = 0;
   repeatMilliseconds = 0;
+  lastReading_ = 0;
 }
 
 Button::~Button() {}
 
+void Button::initialize()
+{
+  pinMode(digitalInputPin_, INPUT_PULLUP);
+}
+
 void Button::sample()
 {
   // read the state of the switch into a local variable:
-  int reading = digitalRead(digitalInputPin_);
+  int reading = (digitalRead(digitalInputPin_) == LOW) ? 1 : 0;
 
-  inputSamples_ = ((inputSamples_ << 1) | (reading == HIGH) ? 0 : 1) & BUTTON_SAMPLE_MASK;
+  if (reading && !lastReading_)
+  {
+    Serial.println("rising edge");
+  }
+
+  lastReading_ = reading;
+
+  inputSamples_ = ((inputSamples_ << 1) | reading) & BUTTON_SAMPLE_MASK;
 
   if (buttonState_ == buttonstates::off)
   {

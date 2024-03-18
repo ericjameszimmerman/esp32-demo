@@ -1,0 +1,46 @@
+@startuml
+
+class Button {
+  + sample()
+  + buttonState()
+
+  + CallbackHandler buttonDown
+  + CallbackHandler buttonRepeat
+
+  + unsigned long repeatMilliseconds
+}
+
+class Led {
+  + initialize()
+  + setOutput()
+  + toggle()
+}
+
+class OledDisplay {
+  + initialize()
+  + updateDemoSequencer()
+  + setDemoSequencerState()
+
+  -Adafruit_SSD1306 display_
+}
+
+class Bsp {
+  + initialize()
+  + updatePeriodic()
+
+  + Button upButton
+  + Button downButton
+  + Button leftButton
+  + Button rightButton
+  + Button centerButton
+
+  + Led activityLed
+
+  + OledDisplay display
+}
+
+Bsp o-- Button : contains
+Bsp o-- Led : contains
+Bsp o-- OledDisplay : contains
+
+@enduml

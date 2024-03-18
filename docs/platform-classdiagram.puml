@@ -1,0 +1,20 @@
+@startuml
+
+class TimerSubsystem {
+  + updatePeriodic()
+  + add()
+
+  -FixedLinkedList<Timer*, 3> timerList_
+}
+
+class Platform {
+
+  + runPeriodic()
+  + enqueueCallback()
+
+  + TimerSubsystem timers
+}
+
+Platform o-- TimerSubsystem : contains
+
+@enduml

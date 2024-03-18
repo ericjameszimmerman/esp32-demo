@@ -1,0 +1,18 @@
+@startuml
+!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Container.puml
+
+LAYOUT_WITH_LEGEND()
+
+title Container Diagram for Embedded System
+
+System_Boundary(aes_sys, "Embedded System") {
+    Container(app_layer, "Application Layer", "Custom Software", "Implements the core functionality and applications.")
+    Container(platform, "Platform / Scheduler", "Microkernel", "Manages task execution timing and prioritization.")
+    Container(bsp, "Board-Support Package (BSP)", "Hardware Abstraction Software", "Provides low-level hardware control and abstractions.")
+}
+
+Rel(app_layer, platform, "Uses timers, events", "Uses")
+Rel(app_layer, bsp, "Interacts with hardware through", "Uses")
+Rel(bsp, platform, "Sends platform-level events", "Uses")
+
+@enduml

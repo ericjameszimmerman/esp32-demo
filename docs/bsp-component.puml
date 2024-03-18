@@ -1,0 +1,17 @@
+@startuml
+!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Component.puml
+' uncomment the following line and comment the first to use locally
+' !include C4_Component.puml
+
+LAYOUT_WITH_LEGEND()
+
+title Component Diagram for Board-Support Package (BSP) in Embedded System
+
+Container_Boundary(bsp, "Board-Support Package") {
+    Component(oled_driver, "OLED Display Driver", "Software", "Manages display on OLED screen.")
+    Component(led_control, "LED Control", "Software", "Manages activity status LED.")
+    Component(button_interface, "Button Interface", "Software", "Handles button inputs and debouncing.")
+    Component(radio_interface, "Radio Transceiver Interface", "Software", "Manages data communication via radio transceiver.")
+}
+
+@enduml

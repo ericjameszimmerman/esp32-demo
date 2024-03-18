@@ -18,6 +18,7 @@ public:
   Button(int digitalInputPin);
   ~Button();
 
+  void initialize();
   void sample();
 
   CallbackHandler buttonDown;
@@ -34,6 +35,7 @@ private:
   uint32_t inputSamples_;
   int buttonState_;
   MonotonicTimestamp repeatTimestamp_;
+  int lastReading_;
 };
 
 }   // namespace bsp

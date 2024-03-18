@@ -1,0 +1,19 @@
+@startuml
+!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Context.puml
+' uncomment the following line and comment the first to use locally
+' !include C4_Context.puml
+
+LAYOUT_WITH_LEGEND()
+
+title System Context diagram for Embedded System Communication Device (ECD)
+
+Person(user, "User", "An individual interacting with the ECD through buttons and reading the OLED display.")
+System_Boundary(mcd_sys, "ECD") {
+    System(mcd, "Embedded System Communication Device", "Allows messaging and interaction via an OLED display and buttons.")
+}
+System_Ext(other_devices, "Other Devices", "Similar devices communicating via radio transceiver.")
+
+Rel(user, mcd, "Uses", "Sends commands and receives information through buttons and OLED display.")
+Rel(mcd, other_devices, "Communicates", "Sends and receives messages")
+
+@enduml

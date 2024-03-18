@@ -4,7 +4,7 @@
 namespace bsp {
 
 BspClass::BspClass()
-    : upButton(36), downButton(39), leftButton(34), rightButton(32), centerButton(33), activityLed(LED_BUILTIN)
+    : upButton(32), downButton(33), leftButton(25), rightButton(26), centerButton(27), activityLed(LED_BUILTIN)
 {
   buttonList_.add(&upButton);
   buttonList_.add(&downButton);
@@ -23,6 +23,15 @@ void BspClass::initialize()
 
   activityLed.initialize();
   display.initialize();
+
+  for (auto it = buttonList_.begin(); it != buttonList_.end(); ++it)
+  {
+    Button* button = *it;
+    if (button)
+    {
+      button->initialize();
+    }
+  }
 }
 
 void BspClass::updatePeriodic()
